@@ -2,8 +2,9 @@
 /**
  * Write a description of class Comments here.
  *
- * @author (your name)
- * @version (a version number or a date)
+* @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
  */
 public class Comments
 {
@@ -80,12 +81,19 @@ public class Comments
 
     }
     
+    /**
+     * @return String that "textually represents" this object. 
+     */
     public String toString(){
      return "ClientName: " + this.nameClient + " Text: " + this.text
      + " Score: " + this.points;
         
     }
     
+    /**
+     * Check the value of a Integer and fix when the number is out of bounds
+     * @param points    Integer to be checked to make a valid value point
+     */
     public void CheckCommentsPoints(Integer points){
         if(points<=0){
             points=1;

@@ -45,10 +45,13 @@ public class Product
     }
 
     /**
-     * Constructor for objects of class Product.
-     * The initial stock quantity is 100.
+     * Parametrized Constructor for objects of class Product.
+     * 
      * @param id The product's identifying number.
      * @param name The product's name.
+     * @param quantity  The product's quantity
+     * @param stockMin  The minimun stock of the product
+     * @param price The product's price
      */
     public Product(Integer id, String name, Integer quantity, Integer stockMin, Float price)
     {
@@ -145,15 +148,20 @@ public class Product
     {
         this.soldCount = _soldCount;
     }
+    /**Return the set of comments
+     * return commentsList  Set of comments
+     */
     public Set getComments(){
      return this.commentsList;   
     }
+    /**Add a integer to soldCount
+     * @param quantity  Integer to be added
+     */
     public void AddSold(Integer quantity){
         this.soldCount += quantity;         
     }
     /**
-     * Show the id, name and the quantity in stock
-     * @return The id, name and quantity in stock.
+     * @return String that "textually represents" this object.
      */
     public String toString()
     {
@@ -179,7 +187,6 @@ public class Product
 
     /**
      * Sell one of these products.
-     * An error is reported if there appears to be no stock.
      */
     public void sellOne()
     {
@@ -190,7 +197,6 @@ public class Product
 
     /**
      * Sell the list of order .
-     * An error is reported if there appears to be no stock.
      * @param Integer OrderQuantity The quantity of a product the client want to order
      */
     public void sellOrder(Integer OrderQuantity)
@@ -203,13 +209,11 @@ public class Product
 
     /**
      * Post a comment in a product.
-     * An error is reported if the client has alredy commented this product.
      * @param Integer OrderQuantity The quantity of a product the client want to order.
      * @param String nameClient The name of the client who want to comment.
      */
     public void PostComment(String comment, String nameClient, Integer points){
 
-        // !commentsList.contains(nameClient)
         if(!HasCommented(nameClient)){
 
             Comments newComment = new Comments(comment, nameClient, points);
@@ -247,23 +251,33 @@ public class Product
         }
 
     }
-    
+    /**
+     * @return The size of the set of comments
+     */
     public Integer getNumberOfComments(){
         return commentsList.size(); 
     }
     
+    /**
+     * @return Hashcode value for the object
+     */
     @Override
     public int hashCode(){
       return Objects.hash(this.id, this.name); 
     }
-    
+    /**
+     * Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
+     * @return true if the given object represents a String equivalent to this string, false otherwise 
+     */
     @Override
     public boolean equals(Object obj) {
         Product product = (Product) obj; 
      return ((product.getName().equals(this.getName())) && (product.getID() == this.getID()) && (product.discount == this.discount));
         
     }
-    
+    /**
+     * @return the set of comments
+     */
     public Set getCommentSet(){
         return this.commentsList;
     }

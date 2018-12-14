@@ -2,8 +2,9 @@ import java.util.ArrayList;
 /**
  * Write a description of class FoodProduct here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
  */
 public class FoodProduct extends Product implements Likeable
 {
@@ -75,6 +76,10 @@ public class FoodProduct extends Product implements Likeable
         return this.unlikes;
     }
     
+    /**
+     * @return String that "textually represents" this object.
+     * 
+     */
     @Override
     public String toString(){
      return "Id: "+ this.id + " Name: " + this.name + " Stock level: " + this.quantity + " Min Quantity: " + this.stockMin 

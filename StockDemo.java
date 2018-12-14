@@ -20,16 +20,6 @@ public class StockDemo
         sww = sww.getInstance();
     }
     
-    public void Entrega3DEMO(){
-    System.out.println("Preparing the Simulation...\n"); 
-    
-    
-    
-    
-    
-    }
-    
-    
     /*
     public void Entrega2Demo(){
   

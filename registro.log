@@ -59,8 +59,8 @@ The order is done and these products need to be replenished
 
 SoldProduct: Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 4
   ~Comment: <ClientName: Jose Manuel Calderon Text: Very good product Score: 4>
-  ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
   ~Comment: <ClientName: Ana Peleteiro Text: I really like this product Score: 4>
+  ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
   ~Comment: <ClientName: Javier Guerra Text: I really like this product Score: 4>
 
 SoldProduct: Id: 18 Name: Bread Stock level: 49 Min Quantity: 25 Price: 1.2 ExpirationMonth: December

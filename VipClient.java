@@ -2,13 +2,14 @@ import java.util.ArrayList;
 /**
  * Write a description of class VipClient here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
  */
 public class VipClient extends Client
 {
     /**
-     * Constructor for objects of class ClientVip
+     * Constructor for objects of class VipClient
      */
     public VipClient()
     {
@@ -16,9 +17,9 @@ public class VipClient extends Client
     }
 
     /**
-     * Constructor Parametrized for objects of class Client
-     * @param name The client's name
+     * Constructor Parametrized for objects of class VipClient
      * @param id The client's identifying number
+     * @param name The client's name
      * @param age The client's age 
      * @param actualLocation The actual location of the client
      */
@@ -28,6 +29,10 @@ public class VipClient extends Client
 
     }
 
+    /**
+     * Go through favourite product map and try to find a given product.If it finds the correct product, post a comment in it and like it.
+     * @param product The product to be commented
+     */
     public void PostComment(Product product){
 
         if(favouriteProducts.containsValue(product)){
@@ -43,6 +48,11 @@ public class VipClient extends Client
         }
     }
 
+    
+    /**
+     * Go through the map of favouriteProduct of this client and each product is added to an ArrayList to prepare a order.
+     * @return favouriteOrder   ArrayList of a order
+     */
     @Override
     public ArrayList PrepareOrder(){
 
@@ -55,6 +65,10 @@ public class VipClient extends Client
         return favouriteOrder; 
     }
 
+    /**
+     * Calculate the total price of a order
+     * @return totalPrice   The total price of the order
+     */
     public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f; 
         for(Product product : favouriteOrder){
@@ -63,6 +77,10 @@ public class VipClient extends Client
         return totalPrice; 
     }
 
+    /**
+     * Make a order to the stockManager
+     * @param   favouriteOrder  ArrayList of the order
+     */
     @Override
     public void MakeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM = StockManager.getInstance();

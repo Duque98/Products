@@ -7,9 +7,10 @@ import java.util.ArrayList;
 /**
  * Write a description of class Client here.
  *
- * @author (your name)
- * @version (a version number or a date)
- *//**/
+ * @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
+ */
 public class Client
 {
     // instance variables - replace the example below with your own
@@ -88,6 +89,7 @@ public class Client
      * Find a product in the map of favourite products
      *
      * @param  product The product that you want to find
+     * @return aux  Boolean to determinate if a product is in the map of favourite
      */
     public boolean findProductFavourite(Product product){
         boolean aux=false;
@@ -187,11 +189,15 @@ public class Client
     public Integer getOrderNumber(){
         return this.orderNumber;
     }
+    /**
+     * Get the map of favouriteProduct
+     * @return favouriteProduct Map of favouriteProducts
+     */
     public Map getFavouriteProduct(){
         return this.favouriteProducts;
     }
     /**
-     * 
+     * @return String that "textually represents" this object.
      * 
      */
     public String toString(){
@@ -217,7 +223,7 @@ public class Client
      *
      * @param   namebyClient A name given by the client to the product
      * @param   comment Comment to be posted
-     * @param   points Points to rive [Range 1-5]
+     * @param   points Integer to give [Range 1-5]
      *       
      */
     public void PostComment(String namebyClient, String comment, Integer points){
@@ -234,6 +240,7 @@ public class Client
      * Find a Product by a name given by the client
      *
      * @param namebyClient A name given by the client to the product
+     * @return product  Product that has founded
      */
     public Product FindProductbyName(String namebyClient){
         Product product = new Product(); 
@@ -245,12 +252,9 @@ public class Client
         return product; 
     }
 /**
-     * Make a order to the Store Manager of a product found using a name given by the client. 
-     * The quantity of the product may variate. 
+   
      *
-     * @param   namebyClient A name given by the client to the product
-     * @param   OrderQuantity The quantity to the product of the order
-     * @param   SM The Stock Manager who sells products     
+     * @param   favouriteOrder  ArrayList of favouriteProducts    
      */
     public void MakeOrder(ArrayList<Product> favouriteOrder){
 
@@ -272,11 +276,18 @@ public class Client
 
     }
     
+    /**
+     * @return Hashcode value for the object
+     */
     @Override
     public int hashCode(){
       return Objects.hash(this.id, this.name); 
     }
     
+    /**
+     * Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
+     * @return true if the given object represents a String equivalent to this string, false otherwise 
+     */
     @Override
     public boolean equals(Object obj) {
         Client client = (Client) obj; 
@@ -284,14 +295,23 @@ public class Client
         
     }
     
+    /**
+     * @return null
+     */
     public ArrayList PrepareOrder(){
         return null; 
     }
     
+    /**
+     * Increase the orderNumber
+     */
     protected void IncreaseOrderNumber(){
         this.orderNumber++; 
     }
     
+    /**
+     * @return favouriteProduct Map of the favouriteProduct
+     */
     public Map getFavouriteProductList(){
         return this.favouriteProducts; 
         

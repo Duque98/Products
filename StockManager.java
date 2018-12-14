@@ -9,8 +9,9 @@ import java.io.*;
  * Manage the stock in a business.
  * The stock is described by zero or more Products.
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
  */
 public class StockManager
 {
@@ -22,10 +23,9 @@ public class StockManager
     private Map<Product, Integer> order;
     // An arrayList of the Clients. 
     private ArrayList<Client> clientsList; 
-
     //Singleton
     private static StockManager SM; 
-
+    
     private ArrayList<String> defaultComments; 
 
     private BufferedWriter bw;
@@ -33,7 +33,7 @@ public class StockManager
     private ArrayList<Product> replenished;
 
     /**
-     * Initialise the stock manager.
+     * Constructor for objects of class StockManager
      */
     private StockManager()
     {   
@@ -50,7 +50,10 @@ public class StockManager
         }
         this.replenished = new ArrayList<Product>();
     }
-
+    /**
+     * Constructor Parametrized for object for the class StockManager
+     * @param name  String of the name of StockManager
+     */
     private StockManager(String name){
 
         this.name=name; 
@@ -66,7 +69,10 @@ public class StockManager
         }
         this.replenished = new ArrayList<Product>();
     }
-
+    /**
+     * Return the unique instance of the StockManager, if it doesn't exist, create it and return it.
+     * @param name  String of the name of stockManager
+     */
     public static StockManager getInstanceParametrized(String name){
 
         if(SM == null){
@@ -74,7 +80,9 @@ public class StockManager
         }
         return SM ;
     }
-
+    /**
+     * Return the unique instance of the StockManager, if it doesn't exist, create it and return it.
+     */
     public static StockManager getInstance(){
 
         if(SM == null){
@@ -83,7 +91,10 @@ public class StockManager
 
         return SM;    
     }
-
+    /**
+     * Add a client to the ArrayList of clients
+     * @param client    Client to be added
+     */
     public void addClient(Client client){
         if(!clientsList.contains(client)){
             clientsList.add(client); 
@@ -106,7 +117,7 @@ public class StockManager
     }
 
     /**
-     * Delete a product to the list.
+     * Delete a product of the list.
      * @param item The item to be deleted.
      */
     public void deleteProduct(Product item)
@@ -119,7 +130,9 @@ public class StockManager
     }
 
     /**
-     * 
+     * Find a product. If it has found return true. 
+     * @param item  Product to be found
+     * @return aux  boolean 
      */
     public boolean findProductBool(Product item){
         boolean aux = false; 
@@ -134,8 +147,9 @@ public class StockManager
     }
 
     /**
-     * Add a product to the order list.
+     * Go through the map. If it finds the given product, add a given quantity to a order.If it doesn't find the product, add it to the map
      * @param item The item to be added.
+     * @param orderQuantity Integer of the quantity of product to be ordered
      */
     public void addProductOrder(Integer OrderQuantity, Product item)
     {
@@ -158,7 +172,7 @@ public class StockManager
     /**
      * Receive a delivery of a particular product.
      * Increase the quantity of the product by the given amount.
-     * @param id The ID of the product.
+     * @param product Product to be replenished
      * @param amount The amount to increase the quantity by.
      */
     public void delivery(Product product, int amount)
@@ -170,9 +184,9 @@ public class StockManager
     }
 
     /**
-     * Try to find a product in the stock with the given id.
-     * @return The identified product, or null if there is none
-     *         with a matching ID.
+     * Try to find a product in the stock list of stockManager
+     * @param item  Product to be found
+     * @return productReturn    Product that has found in the list
      */
     public Product findProduct(Product item)
     {
@@ -195,6 +209,7 @@ public class StockManager
 
     /**
      * Try to find a product in the stock with the given id.
+     * @param id    Integer id of a product
      * @return The identified product, or null if there is none
      *         with a matching ID.
      */
@@ -216,10 +231,10 @@ public class StockManager
     }
 
     /**
-     * Locate a product with the given ID, and return how
+     * Locate a product with the given product, and return how
      * many of this item are in stock. If the ID does not
      * match any product, return zero.
-     * @param id The ID of the product.
+     * @param product Product to inspect.
      * @return The quantity of the given product in stock.
      */
     public int numberInStock(Product product)
@@ -264,7 +279,10 @@ public class StockManager
             setReplenished(this.replenished,product);
         }
     }   
-
+    /**Each turn fill the arrayList with products to be replenished
+     * @param replenished   ArrayList of products out of stock and replenished
+     * @param product   Product 
+     */
     public void setReplenished( ArrayList<Product> replenished,Product product){
         if(!replenished.contains(product)){
             replenished.add(product);
@@ -285,21 +303,33 @@ public class StockManager
             }
         }
     }
-
+    /**Make a order of one of each favourite products in the favourite list of a client
+     * @param favouriteOrder    ArrayList of products to be ordered
+     */
     public void MakeVipOrder(ArrayList<Product> favouriteOrder){
         for(Product product : favouriteOrder){
             AddToOrder(1, product);
         }
     }
-
+    /**Make a order of 50 of this product
+     * @param product   Product to be ordered
+     */
     public void MakeStandardOrder(Product product){
         AddToOrder(50, product);     
     }
-
+    /**Return a comment based of a given point
+     * @param points    Integer of points
+     * @return the choosen comment of the default comments list 
+     */
     public String getDefaultComments (Integer points){
         return this.defaultComments.get(points);         
     }
 
+    /**Return the product in the stock list with the most comments
+     * 
+     * @return The product with the most comments
+     */
+    
     public Product getMostCommented(){
         Integer aux = 0; 
         Product p = new Product(); 
@@ -312,6 +342,10 @@ public class StockManager
         return p;
     }
 
+    /**Return the client who spent more money 
+     * 
+     * @return bestClient the client who spent more money 
+     */
     public Client getBestClient(){
         Client bestClient = new Client(); 
         Float aux = 0.0f; 
@@ -326,6 +360,10 @@ public class StockManager
         return bestClient; 
     }
 
+    /**Return the product with more sales number in the stock list 
+     * 
+     * @return The product with more sales number 
+     */
     public Product getMostSold(){
         Product mostSold = new Product(); 
         for (Map.Entry<Product, Integer> entry : order.entrySet()){
@@ -337,10 +375,18 @@ public class StockManager
         return mostSold; 
     }
 
+    /**Return the ArrayList of Clients 
+     * 
+     * @return ArrayList with all the Clients of StockManager 
+     */
     public ArrayList getClientList(){        
         return this.clientsList; 
     }
 
+    /**Find a Client in the Client List by a given id
+     * @param Id Id to find a Client
+     * @return Client with the given id  
+     */
     public Client getClient(Integer id){
         Client c = new Client();
         boolean aux = false; 
@@ -355,6 +401,10 @@ public class StockManager
         return c; 
     }
 
+    /**Return the client with more number of orders
+     * 
+     * @return best Client with more number of orders  
+     */
     public Client getOrderNumber(){
         Integer aux = 0; 
         Client best = new Client(); 
@@ -368,6 +418,8 @@ public class StockManager
 
     }
 
+    /**Initialize an ArrayList of predetermined comments 
+     */
     public void InitializeDefaultComments(){
         this.defaultComments.add("Bad product");
         this.defaultComments.add("Not very good product");
@@ -376,6 +428,9 @@ public class StockManager
         this.defaultComments.add("Excellent product");
     }
 
+    /**Write the file "registro.log" to save the simulation
+     * 
+     */
     public void WriteFile(){
         try{
             Integer i=1; 

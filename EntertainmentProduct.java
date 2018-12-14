@@ -2,8 +2,9 @@
 /**
  * Write a description of class LeisureProduct here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
  */
 public class EntertainmentProduct extends Product
 {

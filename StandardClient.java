@@ -7,8 +7,9 @@ import java.util.*;
 /**
  * Write a description of class ClientStandar here.
  *
- * @author (your name)
- * @version (a version number or a date)
+ * @author Jose Ignacio Duque Blazquez
+ * @author Alberto Valerio Burgueño
+ * @version v.1
  */
 public class StandardClient extends Client
 {
@@ -33,17 +34,10 @@ public class StandardClient extends Client
 
     }
 
-    @Override
-    public void MakeOrderFavourites(StockManager SM){
-        SM.getInstance();
-        HashMap favouriteOrder = new HashMap<Product, Integer>(); 
-        for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){            
-            favouriteOrder.put(entry.getValue(), 50);             
-        }
-        SM.FavouriteOrder(favouriteOrder);
 
-    }
-
+    /**Go through the map of favouriteProduct of this client and add to order the two more expensive products.
+     * @return favouriteOrder   ArrayList of a order
+     */
     @Override
     public ArrayList PrepareOrder(){
         ArrayList aux = new ArrayList<Product>(); 
@@ -68,6 +62,10 @@ public class StandardClient extends Client
         return favouriteOrder; 
     }
 
+    /**
+     * Calculate the total price of a order
+     * @return totalPrice   The total price of the order
+     */
     public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f;
         for(Product product : favouriteOrder){
@@ -75,7 +73,10 @@ public class StandardClient extends Client
         }
         return totalPrice;
     }
-
+    /**
+     * Make a order to the stockManager
+     * @param   favouriteOrder  ArrayList of the order
+     */
     @Override
     public void MakeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM=StockManager.getInstance();
