@@ -102,7 +102,17 @@ public class StockManager
             System.out.println("The Client has alredy exists");
         }
     }
-
+    /**
+     * Delete a client to the ArrayList of clients
+     * @param client    Client to be added
+     */
+    public void deleteClient(Client client){
+        if(clientsList.contains(client)){
+            clientsList.remove(client); 
+        }else{
+            System.out.println("The Client is not in the Client list");
+        }
+    }
     /**
      * Add a product to the list.
      * @param item The item to be added.
@@ -117,19 +127,6 @@ public class StockManager
     }
 
     /**
-     * Delete a product of the list.
-     * @param item The item to be deleted.
-     */
-    public void deleteProduct(Product item)
-    {
-        if(findProductBool(item)){
-            stock.remove(item);
-        }else{
-            System.out.println("The product has alredy deleted");
-        }
-    }
-
-    /**
      * Find a product. If it has found return true. 
      * @param item  Product to be found
      * @return aux  boolean 
@@ -139,7 +136,7 @@ public class StockManager
         Iterator<Product> it = stock.iterator(); 
         while(it.hasNext() && !aux){
             Product product = it.next(); 
-            if(product.equals(item)){
+            if(item.equals(product)){
                 aux=true;       
             }
         }
@@ -483,6 +480,12 @@ public class StockManager
         }catch(IOException e){
             System.out.println("ERROR: IOException has ocurred");
         }
-
+        
     }
-}
+    
+    
+        public ArrayList getStockList(){
+            return this.stock;
+        }
+    }
+
