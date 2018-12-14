@@ -33,7 +33,8 @@ public class HomeProduct extends Product implements Likeable
     /**
      * Get the home part
      * @return The home part that is applied the product.
-     *
+     */
+    
     public String getHomePart(){
         return this.homePart;
     }

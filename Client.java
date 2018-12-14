@@ -77,7 +77,7 @@ public class Client
      */
     public void DeleteProductFavourite(String namebyClient)
     {
-        if(!favouriteProducts.containsKey(namebyClient)){
+        if(favouriteProducts.containsKey(namebyClient)){
             favouriteProducts.remove(namebyClient);   
         }
 
@@ -92,7 +92,7 @@ public class Client
     public boolean findProductFavourite(Product product){
         boolean aux=false;
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
-            if(favouriteProducts.containsKey(product.getName())){
+            if(favouriteProducts.containsValue(product)){
                 aux=true;
             }
         }
@@ -290,5 +290,10 @@ public class Client
     
     protected void IncreaseOrderNumber(){
         this.orderNumber++; 
+    }
+    
+    public Map getFavouriteProductList(){
+        return this.favouriteProducts; 
+        
     }
 }
