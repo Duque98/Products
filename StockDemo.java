@@ -10,7 +10,6 @@ public class StockDemo
 {
     // The stock manager.
     private StockManager sww;
-
     /**
      * Create a StockManager and populate it with a few
      * sample products.
