@@ -14,6 +14,7 @@ public class VipClient extends Client
     public VipClient()
     {
         super();
+        this.orderNumber = 1; 
     }
 
     /**
@@ -26,6 +27,7 @@ public class VipClient extends Client
 
     public VipClient(Integer id, String name, Integer age, String actualLocation){
         super(id, name, age, actualLocation); 
+        this.orderNumber = 1; 
 
     }
 
@@ -72,7 +74,7 @@ public class VipClient extends Client
     public Float getPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f; 
         for(Product product : favouriteOrder){
-            totalPrice += product.getPrice() + (product.getPrice()*product.getDiscount());            
+            totalPrice +=  this.orderNumber * (product.getPrice() + (product.getPrice()*product.getDiscount()));            
         }  
         return totalPrice; 
     }
@@ -85,7 +87,7 @@ public class VipClient extends Client
     public void makeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM = StockManager.getInstance();
         this.moneySpent += this.getPriceOrder(favouriteOrder); 
-        SM.makeVipOrder(favouriteOrder);
+        SM.makeVipOrder(favouriteOrder, this.orderNumber);
         
         for(Product product : favouriteOrder){
             postComment(product);

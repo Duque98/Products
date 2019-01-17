@@ -20,6 +20,7 @@ public class StandardClient extends Client
     public StandardClient()
     {
         super();
+        this.orderNumber = 50; 
     }
 
     /**
@@ -31,6 +32,7 @@ public class StandardClient extends Client
      */
     public StandardClient(Integer id, String name, Integer age,String actualLocation){
         super(id, name, age, actualLocation);  
+        this.orderNumber = 50; 
 
     }
 
@@ -63,7 +65,7 @@ public class StandardClient extends Client
     public Float getPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f;
         for(Product product : favouriteOrder){
-            totalPrice += 50.0f*( product.getPrice() + (product.getPrice()*(product.getDiscount())));
+            totalPrice += this.orderNumber*( product.getPrice() + (product.getPrice()*(product.getDiscount())));
         }
         return totalPrice;
     }
@@ -76,7 +78,7 @@ public class StandardClient extends Client
     public void makeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM=StockManager.getInstance();
         for(Product product : favouriteOrder){
-            SM.makeStandardOrder(product);
+            SM.makeStandardOrder(product, this.orderNumber);
             increaseOrderNumber(); 
             postComment(product);
         }   

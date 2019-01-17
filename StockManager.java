@@ -304,17 +304,17 @@ public class StockManager
     /**Make a order of one of each favourite products in the favourite list of a client
      * @param favouriteOrder    ArrayList of products to be ordered
      */
-    public void makeVipOrder(ArrayList<Product> favouriteOrder){
+    public void makeVipOrder(ArrayList<Product> favouriteOrder, Integer orderNumber){
         for(Product product : favouriteOrder){
-            addToOrder(1, product);
+            addToOrder(orderNumber, product);
         }
     }
 
     /**Make a order of 50 of this product
      * @param product   Product to be ordered
      */
-    public void makeStandardOrder(Product product){
-        addToOrder(50, product);     
+    public void makeStandardOrder(Product product, Integer orderNumber){
+        addToOrder(orderNumber, product);     
     }
 
     /**Return a comment based of a given point
@@ -450,7 +450,7 @@ public class StockManager
                 this.bw.newLine();
 
                 for(Product product : aux){
-                    this.bw.write("  -Product: <"+ product.toString()+">\n");        
+                    this.bw.write("  -Product: <" + " OrderQuantity: " + client.getOrderNumber()+ " " + product.toString()+">\n");        
                 }
                 client.makeOrder(aux);
                 if(!this.replenished.isEmpty()){
