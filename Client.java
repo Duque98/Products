@@ -84,7 +84,6 @@ public class Client
 
     }
 
-   
     /**
      * Find a product in the map of favourite products
      *
@@ -98,7 +97,6 @@ public class Client
                 aux=true;
             }
         }
-      
         return aux;
     }
 
@@ -128,7 +126,8 @@ public class Client
     public int getAge(){
         return this.age;
     }
- /**
+
+    /**
      * Get moneySpent
      *
      * @return   moneySpent
@@ -136,6 +135,7 @@ public class Client
     public Float getMoneySpent(){
         return this.moneySpent;
     }
+
     /**
      * Get ActualLocation
      * 
@@ -180,8 +180,8 @@ public class Client
     public void setActualLocation(String actualLocation){
         this.actualLocation=actualLocation;
     }
-    
-        /**
+
+    /**
      * Get orderNumber
      *
      * @return    orderNumber
@@ -189,6 +189,7 @@ public class Client
     public Integer getOrderNumber(){
         return this.orderNumber;
     }
+
     /**
      * Get the map of favouriteProduct
      * @return favouriteProduct Map of favouriteProducts
@@ -196,14 +197,16 @@ public class Client
     public Map getFavouriteProduct(){
         return this.favouriteProducts;
     }
+
     /**
      * @return String that "textually represents" this object.
      * 
      */
     public String toString(){
         return "Id: " + this.id + " Name: "+ this.name + " Age: " + this.age +
-                " City: " + this.actualLocation;
+        " City: " + this.actualLocation;
     }
+
     /**
      * Show every product in the favourite list of the client
      * 
@@ -211,13 +214,10 @@ public class Client
     public void showProducts(){
         System.out.println("The list of favourite products: ");
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
-
             System.out.println(entry.toString()); 
         }
-
     }
 
-    
     /**
      * Post a comment in determined products 
      *
@@ -227,15 +227,14 @@ public class Client
      *       
      */
     public void postComment(String namebyClient, String comment, Integer points){
-        
+
         if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
             product = findProductbyName(namebyClient);
-            
             product.postComment(comment, this.name, points);
-            
         }
     }
+
     /**
      * Find a Product by a name given by the client
      *
@@ -251,39 +250,39 @@ public class Client
         }
         return product; 
     }
-/**
-   
+
+    /**
+
      *
      * @param   favouriteOrder  ArrayList of favouriteProducts    
      */
     public void makeOrder(ArrayList<Product> favouriteOrder){
 
     }
-/**
+
+    /**
      * Make a order to the Store Manager of a product found in the Favourite List of the client. 
      * The quantity of the product is 1 of each. 
      *
      * @param   SM The Stock Manager who sells products  
      */
     public void makeOrderFavourites(StockManager SM){
-        
         SM.getInstance(); 
         HashMap favouriteOrder = new HashMap<Product, Integer>(); 
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){            
             favouriteOrder.put(entry.getValue(), 1);             
         }
         SM.favouriteOrder(favouriteOrder);
-
     }
-    
+
     /**
      * @return Hashcode value for the object
      */
     @Override
     public int hashCode(){
-      return Objects.hash(this.id, this.name); 
+        return Objects.hash(this.id, this.name); 
     }
-    
+
     /**
      * Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
      * @return true if the given object represents a String equivalent to this string, false otherwise 
@@ -291,22 +290,20 @@ public class Client
     @Override
     public boolean equals(Object obj) {
         Client client = (Client) obj; 
-     return (client.getName().equals(this.getName()) && client.getId() == (this.getId()));
-        
+        return (client.getName().equals(this.getName()) && client.getId() == (this.getId()));
     }
-    
+
     /**
      * @return null
      */
     public ArrayList prepareOrder(){
         return null; 
     }
-    
+
     /**
      * @return favouriteProduct Map of the favouriteProduct
      */
     public Map getFavouriteProductList(){
         return this.favouriteProducts; 
-        
     }
 }

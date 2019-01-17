@@ -20,7 +20,6 @@ public class StandardClient extends Client
     public StandardClient()
     {
         super();
-        this.orderNumber = 50; 
     }
 
     /**
@@ -33,7 +32,6 @@ public class StandardClient extends Client
     public StandardClient(Integer id, String name, Integer age,String actualLocation){
         super(id, name, age, actualLocation);  
         this.orderNumber = 50; 
-
     }
 
     /**Go through the map of favouriteProduct of this client and add to order the two more expensive products.
@@ -45,15 +43,13 @@ public class StandardClient extends Client
         ArrayList favouriteOrder = new ArrayList<Product>(); 
         for(Product product : favouriteProducts.values()){
             aux.add(product); 
-
         }
-
         Collections.sort(aux, Collections.reverseOrder(new PriceComparator())); 
         favouriteOrder.add(aux.get(0)); 
         try{
             favouriteOrder.add(aux.get(1)); 
         }catch (IndexOutOfBoundsException e){
-      
+
         }
         return favouriteOrder; 
     }
@@ -81,7 +77,6 @@ public class StandardClient extends Client
             SM.makeStandardOrder(product, this.orderNumber);
             postComment(product);
         }   
-
         this.moneySpent += getPriceOrder(favouriteOrder); 
     }
 
@@ -94,7 +89,6 @@ public class StandardClient extends Client
      *       
      */
     public void postComment(Product product){
-
         if(favouriteProducts.containsValue(product)){
             if(product instanceof FoodProduct){
             }else{                               
@@ -104,10 +98,8 @@ public class StandardClient extends Client
     }
 
     private void checkPoint(Product product){
-
         Integer point = (product.name.length()%5)+1;
         String comment = StockManager.getInstance().getDefaultComments(point-1);
-
         if(product instanceof HomeProduct){
             HomeProduct hp = (HomeProduct)product;
             if(point >= 4){            
@@ -117,7 +109,5 @@ public class StandardClient extends Client
             }
         }
         product.postComment(comment, this.name, point);
-
     }
-
 }

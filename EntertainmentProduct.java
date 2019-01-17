@@ -8,8 +8,6 @@
  */
 public class EntertainmentProduct extends Product
 {
-    
-
     /**
      * Constructor for objects of class LeisureProduct
      */
@@ -17,15 +15,14 @@ public class EntertainmentProduct extends Product
     {
         super();
     }
-   /**
+
+    /**
      * Parametrized constructor for objects of class LeisureProduct
      */
     public EntertainmentProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price)
     {
         super(id,name,quantity,stockMin, price);
         this.discount=0.2f;
-
     }
-    
-    
+
 }

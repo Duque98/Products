@@ -19,8 +19,10 @@ public class HomeProduct extends Product implements Likeable
         super(); 
         this.likes = 0; 
         this.unlikes = 0; 
+        this.homePart = "";
     }
-/**
+
+    /**
      * Parametrized constructor for objects of class HomeProduct
      */
     public HomeProduct(Integer id, String name, Integer quantity, Integer stockMin, Float price, String homePart)
@@ -31,21 +33,24 @@ public class HomeProduct extends Product implements Likeable
         this.likes = 0; 
         this.unlikes = 0; 
     }
+
     /**
      * Get the home part
      * @return The home part that is applied the product.
      */
-    
+
     public String getHomePart(){
         return this.homePart;
     }
-     /**
+
+    /**
      * Increase in 1 the likes
      */
     @Override
     public void Like(){
         this.likes++;
     }
+
     /**
      * Decrease in 1 the likes
      */
@@ -53,6 +58,7 @@ public class HomeProduct extends Product implements Likeable
     public void Unlike(){
         this.unlikes++;
     }
+
     /**
      * Get the likes
      * @return The likes of the product.
@@ -61,6 +67,7 @@ public class HomeProduct extends Product implements Likeable
     public Integer getLikes(){
         return this.likes;
     }
+
     /**
      * Get the unlikes
      * @return The unlikes of the product.
@@ -69,16 +76,15 @@ public class HomeProduct extends Product implements Likeable
     public Integer getUnlikes(){
         return this.unlikes;
     }
-    
+
     /**
      * @return String that "textually represents" this object.
      * 
      */
     @Override
     public String toString(){
-     return "Id: "+ this.id + " Name: " + this.name + " Stock level: " + this.quantity +
-     " Min Quantity: " + this.stockMin +" Price: " + this.price + " HomePart: " + this.homePart + " NumberOfLikes: " + this.likes;
-        
-        
+        return "Id: "+ this.id + " Name: " + this.name + " Stock level: " + this.quantity +
+        " Min Quantity: " + this.stockMin +" Price: " + this.price + " HomePart: " + this.homePart + " NumberOfLikes: " + this.likes;
+
     }
 }

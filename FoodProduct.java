@@ -34,7 +34,6 @@ public class FoodProduct extends Product implements Likeable
         this.discount=-0.1f;
         this.likes = 0; 
         this.unlikes = 0; 
-
     }
    
     /**

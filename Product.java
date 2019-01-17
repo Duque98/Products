@@ -9,13 +9,13 @@ import java.util.Iterator;
  */
 public class Product
 {
-    // An identifying number for this product.
+    //An identifying number for this product.
     protected Integer id;
-    // The name of this product.
+    //The name of this product.
     protected String name;
-    // The quantity of this product in stock.
+    //The quantity of this product in stock.
     protected Integer quantity;
-    // A Set of Comments 
+    //A Set of Comments 
     protected Set<Comments> commentsList; 
     //Stock of product
     protected Integer stockMin;
@@ -67,9 +67,7 @@ public class Product
         this.commentsList = new TreeSet<Comments>(new PointsComparator()); 
         this.stockMin=stockMin;
         this.price=price;
-
         this.discount=0.0f;
-
     }
 
     /**
@@ -179,7 +177,6 @@ public class Product
     {
         if(quantity >= OrderQuantity) {
             quantity = quantity - OrderQuantity;
-
         }
     }
 
@@ -189,13 +186,9 @@ public class Product
      * @param String nameClient The name of the client who want to comment.
      */
     public void postComment(String comment, String nameClient, Integer points){
-
         if(!hasCommented(nameClient)){
-
-            Comments commentToAdd = new Comments(comment, nameClient, points);
-            
+            Comments commentToAdd = new Comments(comment, nameClient, points);    
             commentsList.add(commentToAdd);
-
         }
     }
 
@@ -214,7 +207,6 @@ public class Product
                 aux=true;       
             }            
         }
-
         return aux; 
     }
 
@@ -223,11 +215,9 @@ public class Product
      *  
      */
     public void showComments(){
-
         for (Comments comments : commentsList){
             comments.showComment();             
         }
-
     }
 
     /**
@@ -257,7 +247,6 @@ public class Product
         if(!(obj instanceof Product))
             return false;
         return ((this.getName().equals(product.getName())) && (this.getID().equals(product.getID())));
-
     }
 
     /**

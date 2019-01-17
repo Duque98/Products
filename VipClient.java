@@ -14,7 +14,6 @@ public class VipClient extends Client
     public VipClient()
     {
         super();
-        this.orderNumber = 1; 
     }
 
     /**
@@ -28,7 +27,6 @@ public class VipClient extends Client
     public VipClient(Integer id, String name, Integer age, String actualLocation){
         super(id, name, age, actualLocation); 
         this.orderNumber = 1; 
-
     }
 
     /**
@@ -57,13 +55,10 @@ public class VipClient extends Client
      */
     @Override
     public ArrayList prepareOrder(){
-
         ArrayList favouriteOrder = new ArrayList<Product>(); 
         for(Product product : favouriteProducts.values()){
             favouriteOrder.add(product);
-
         }
-
         return favouriteOrder; 
     }
 
