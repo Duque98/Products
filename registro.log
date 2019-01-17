@@ -27,14 +27,18 @@ Client: <Id: 3 Name: Jose Manuel Calderon Age: 37 City: Villanueva de la Serena>
    Comments:  
           ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4 
           ~Comment: <ClientName: Rafa Nadal Text: Bad product Score: 1>
-  -Product: < OrderQuantity: 50 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 1>
+  -Product: < OrderQuantity: 50 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 1
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 The order is done and these products need to be replenished
   -Product: <Id: 1 Name: Nintendo Switch Stock level: 3 Min Quantity: 2 Price: 300.0
    Comments:  
           ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4 
           ~Comment: <ClientName: Rafa Nadal Text: Bad product Score: 1>
-  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 2>
+  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 2
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 (turn: 4)
 Client: <Id: 4 Name: Laia Palau Age: 39 City: Barcelona>
@@ -51,10 +55,14 @@ The order is done and these products need to be replenished
 
 (turn: 5)
 Client: <Id: 5 Name: Javier Guerra Age: 35 City: Segovia>
-  -Product: < OrderQuantity: 1 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 2>
+  -Product: < OrderQuantity: 1 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 2
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 The order is done and these products need to be replenished
-  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 3>
+  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 3
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 (turn: 6)
 Client: <Id: 6 Name: Ana Peleteiro Age: 22 City: Riveira>
@@ -64,11 +72,15 @@ Client: <Id: 6 Name: Ana Peleteiro Age: 22 City: Riveira>
    Comments:  
           ~Comment: <ClientName: Rafa Nadal Text: Very good product Score: 4>
   -Product: < OrderQuantity: 1 Id: 19 Name: Coffee Stock level: 150 Min Quantity: 100 Price: 1.0 ExpirationMonth: November>
-  -Product: < OrderQuantity: 1 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 3>
+  -Product: < OrderQuantity: 1 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 3
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
   -Product: < OrderQuantity: 1 Id: 18 Name: Bread Stock level: 50 Min Quantity: 25 Price: 1.2 ExpirationMonth: December>
 
 The order is done and these products need to be replenished
-  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 4>
+  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 4
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 (turn: 7)
 Client: <Id: 1 Name: Rafa Nadal Age: 32 City: Manacor>
@@ -95,12 +107,18 @@ Client: <Id: 2 Name: Carolina Marin Age: 25 City: Huelva>
    Comments:  
           ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4 
           ~Comment: <ClientName: Rafa Nadal Text: Bad product Score: 1>
-  -Product: < OrderQuantity: 1 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 4>
-  -Product: < OrderQuantity: 1 Id: 7 Name: Lamp Stock level: 4 Min Quantity: 2 Price: 17.0 HomePart: livingroom NumberOfLikes: 1>
+  -Product: < OrderQuantity: 1 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 4
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
+  -Product: < OrderQuantity: 1 Id: 7 Name: Lamp Stock level: 4 Min Quantity: 2 Price: 17.0 HomePart: livingroom NumberOfLikes: 1
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
   -Product: < OrderQuantity: 1 Id: 20 Name: Milk Stock level: 98 Min Quantity: 50 Price: 0.6 ExpirationMonth: December>
 
 The order is done and these products need to be replenished
-  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 5>
+  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 5
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 (turn: 9)
 Client: <Id: 3 Name: Jose Manuel Calderon Age: 37 City: Villanueva de la Serena>
@@ -108,14 +126,18 @@ Client: <Id: 3 Name: Jose Manuel Calderon Age: 37 City: Villanueva de la Serena>
    Comments:  
           ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4 
           ~Comment: <ClientName: Rafa Nadal Text: Bad product Score: 1>
-  -Product: < OrderQuantity: 50 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 5>
+  -Product: < OrderQuantity: 50 Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 5
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 The order is done and these products need to be replenished
   -Product: <Id: 1 Name: Nintendo Switch Stock level: 3 Min Quantity: 2 Price: 300.0
    Comments:  
           ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4 
           ~Comment: <ClientName: Rafa Nadal Text: Bad product Score: 1>
-  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 6>
+  -Product: <Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 6
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4>
 
 (turn: 10)
 Client: <Id: 4 Name: Laia Palau Age: 39 City: Barcelona>
@@ -133,6 +155,8 @@ The order is done and these products need to be replenished
  At the end of simulation
 
 SoldProduct: Id: 8 Name: Barbecue Stock level: 1 Min Quantity: 1 Price: 80.0 HomePart: garden NumberOfLikes: 6
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4
 
 SoldProduct: Id: 18 Name: Bread Stock level: 49 Min Quantity: 25 Price: 1.2 ExpirationMonth: December
 
@@ -146,8 +170,12 @@ SoldProduct: Id: 2 Name: Xbox One Stock level: 3 Min Quantity: 2 Price: 220.0
           ~Comment: <ClientName: Rafa Nadal Text: Very good product Score: 4
 
 SoldProduct: Id: 7 Name: Lamp Stock level: 3 Min Quantity: 2 Price: 17.0 HomePart: livingroom NumberOfLikes: 2
+   Comments:  
+          ~Comment: <ClientName: Carolina Marin Text: I really like this product Score: 4
 
 SoldProduct: Id: 9 Name: Towel Stock level: 9 Min Quantity: 5 Price: 9.0 HomePart: bathroom NumberOfLikes: 1
+   Comments:  
+          ~Comment: <ClientName: Ana Peleteiro Text: I really like this product Score: 4
 
 SoldProduct: Id: 19 Name: Coffee Stock level: 149 Min Quantity: 100 Price: 1.0 ExpirationMonth: November
 

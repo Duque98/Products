@@ -43,6 +43,7 @@ public class VipClient extends Client
                 if(product instanceof HomeProduct){
                     HomeProduct hp = (HomeProduct)product;
                     hp.Like();
+                    
                 }              
             }
         }

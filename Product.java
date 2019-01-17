@@ -203,8 +203,10 @@ public class Product
         Iterator<Comments> it = commentsList.iterator(); 
         while(it.hasNext() && !aux){
             Comments c = it.next();
+            System.out.println(c.getNameClient()); 
             if(c.getNameClient().equals(nameClient)){
-                aux=true;       
+                aux=true;  
+                System.out.println(c.getNameClient()); 
             }            
         }
         return aux; 

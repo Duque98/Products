@@ -83,8 +83,17 @@ public class HomeProduct extends Product implements Likeable
      */
     @Override
     public String toString(){
+        StringBuilder commentsString = new StringBuilder();
+        if(!commentsList.isEmpty()){
+            commentsString.append("\n   Comments: " ); 
+            for(Comments comment : this.commentsList){
+                commentsString.append(" \n          ~Comment: <" + comment.toString());
+            }}
+        
+        
         return "Id: "+ this.id + " Name: " + this.name + " Stock level: " + this.quantity +
-        " Min Quantity: " + this.stockMin +" Price: " + this.price + " HomePart: " + this.homePart + " NumberOfLikes: " + this.likes;
+        " Min Quantity: " + this.stockMin +" Price: " + this.price + " HomePart: " + this.homePart + " NumberOfLikes: " + this.likes
+        + commentsString;
 
     }
 }
