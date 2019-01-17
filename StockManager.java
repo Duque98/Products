@@ -192,7 +192,7 @@ public class StockManager
      * @param product Product to be replenished
      * @param amount The amount to increase the quantity by.
      */
-    public void delivery(Product product, int amount)
+    private void delivery(Product product, int amount)
     {
         Product ProductoEncontrado=findProduct(product);
         if(ProductoEncontrado!=null){

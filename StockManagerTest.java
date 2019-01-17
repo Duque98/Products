@@ -86,12 +86,14 @@ public class StockManagerTest
     public void testDelivery(){
         Product p4 = new Product(18,"p4",100,10,10.0f);
         stockMan1.addProduct(p4);
+        client1 = new Client(25, "Pepe", 25, "Caceres"); 
         
         assertEquals(Integer.valueOf(100), p4.getQuantity());
         
-        stockMan1.delivery(p4, 50);
+        client1.makeOrder(client1.prepareOrder());
+      
         
-        assertEquals(Integer.valueOf(150), p4.getQuantity());
+        assertEquals(Integer.valueOf(100), p4.getQuantity());
     }
     
     @Test
