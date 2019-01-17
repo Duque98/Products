@@ -42,20 +42,11 @@ public class ProductTest
         assertEquals(100.0f, (float)new Float(product1.getPrice()), 0.1f);
         assertEquals(10, (int)new Integer(product1.getQuantity()));
         assertEquals(2, (int)new Integer(product1.getStock()));
-        assertEquals(0, (int)new Integer(product1.getSoldCount()));
+
         assertEquals(0, (int)new Integer(product1.getNumberOfComments()));
         
     }
-        @Test
-    public void testAddSold()
-    {
-        assertEquals(0,(int)product1.getSoldCount());
-        
-        product1.AddSold(1);
 
-        assertEquals(1,(int)product1.getSoldCount());
-    }
-    
          @Test
     public void testIncreaseQuantity()
     {
@@ -91,7 +82,7 @@ public class ProductTest
     {
         assertEquals(0,(int)product1.getNumberOfComments());
         
-        product1.PostComment("good", "Pedro", 5);
+        product1.postComment("good", "Pedro", 5);
 
         assertEquals(1,(int)product1.getNumberOfComments());
     }
@@ -99,11 +90,11 @@ public class ProductTest
         @Test
     public void testHasCommented()
     {
-        assertEquals(false,(boolean)product1.HasCommented("Pedro"));
+        assertEquals(false,(boolean)product1.hasCommented("Pedro"));
         
-        product1.PostComment("good", "Pedro", 5);
+        product1.postComment("good", "Pedro", 5);
 
-        assertEquals(true,(boolean)product1.HasCommented("Pedro"));
+        assertEquals(true,(boolean)product1.hasCommented("Pedro"));
     }
     /**
      * Tears down the test fixture.

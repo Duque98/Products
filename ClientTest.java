@@ -39,11 +39,11 @@ public class ClientTest
         foodProd1 = new FoodProduct(2, "foodprod", 5, 2, 20.0f, "december");
         entertai1 = new EntertainmentProduct(3, "enprod", 5, 2, 30.0f);
         entertai2 = new EntertainmentProduct(4, "enprod2", 5, 2, 40.0f);
-        client1.AddProductFavourite(homeProd1, "hp");
-        client1.AddProductFavourite(foodProd1, "fp");
-        client1.AddProductFavourite(entertai1, "ep");
-        client1.AddProductFavourite(entertai2, "ep2"); 
-        client1.PostComment("ep", "good", 5);
+        client1.addProductFavourite(homeProd1, "hp");
+        client1.addProductFavourite(foodProd1, "fp");
+        client1.addProductFavourite(entertai1, "ep");
+        client1.addProductFavourite(entertai2, "ep2"); 
+        client1.postComment("ep", "good", 5);
     }
     
     @Test
@@ -67,20 +67,20 @@ public class ClientTest
     @Test
     public void testAddProduct()
     {
-        client1.AddProductFavourite(entertai2, "ep2");
+        client1.addProductFavourite(entertai2, "ep2");
         assertEquals(entertai2, client1.getFavouriteProductList().get("ep2")); 
     }
     
     @Test
     public void testDeleteProduct()
     {
-        client1.DeleteProductFavourite("ep2");
+        client1.deleteProductFavourite("ep2");
         assertEquals(null, client1.getFavouriteProductList().get("ep2")); 
     }
     @Test
     public void testFindProductByName()
     {
-        Product p = client1.FindProductbyName("ep");
+        Product p = client1.findProductbyName("ep");
         assertEquals(p, client1.getFavouriteProductList().get("ep")); 
     }
     
@@ -94,7 +94,7 @@ public class ClientTest
             @Test
     public void testIncreaseOrderNumber()
     { 
-        client1.IncreaseOrderNumber(); 
+        client1.increaseOrderNumber(); 
         assertEquals(1,(int)client1.getOrderNumber()); 
     }
     

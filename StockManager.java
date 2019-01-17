@@ -125,7 +125,7 @@ public class StockManager
      */
     public void addProduct(Product item)
     {
-        if(!findProductBool(item)){
+        if(!stock.contains(item)){
             stock.add(item);
         }else{
             System.out.println("The product has alredy exists");
@@ -137,18 +137,18 @@ public class StockManager
      * @param item The item to be deleted.
      */
     public void deleteProduct(Product item){
-        if(findProductBool(item)){
+        if(stock.contains(item)){
             stock.remove(item);
         }else{
             System.out.println("The product is not in stock");
         }
     }
 
-    /**
+    /*
      * Find a product. If it has found return true. 
      * @param item  Product to be found
      * @return aux  boolean 
-     */
+    
     public boolean findProductBool(Product item){
         boolean aux = false; 
 
@@ -163,7 +163,8 @@ public class StockManager
         }
         return aux;
     }
-
+    */
+ 
     /**
      * Go through the map. If it finds the given product, add a given quantity to a order.If it doesn't find the product, add it to the map
      * @param item The item to be added.

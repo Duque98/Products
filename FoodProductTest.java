@@ -38,7 +38,6 @@ public class FoodProductTest
         assertEquals(100.0f, (float)new Float(product1.getPrice()), 0.1f);
         assertEquals(10, (int)new Integer(product1.getQuantity()));
         assertEquals(2, (int)new Integer(product1.getStock()));
-        assertEquals(0, (int)new Integer(product1.getSoldCount()));
         assertEquals(0, (int)new Integer(product1.getNumberOfComments()));
         assertEquals("December", product1.getExpirationMonth()); 
     }
