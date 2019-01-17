@@ -458,7 +458,6 @@ public class StockManager
             Integer soldCount=0;
             Integer turn=1; 
             ArrayList<Product> aux=new ArrayList();
-            Set<Comments> auxSet= new HashSet();
             Client client = new Client();
 
             for(int i=0;turn<=10;i++){
@@ -466,20 +465,16 @@ public class StockManager
                 aux=client.prepareOrder();
                 this.replenished.clear();
 
-                this.bw.write("(turn: " + turn +")");
+                this.bw.write("\n(turn: " + turn +")");
                 this.bw.newLine();
                 this.bw.write("Client: <"+ client.toString()+">");
                 this.bw.newLine();
 
                 for(Product product : aux){
-                    this.bw.write("  -Product: <"+ product.toString()+">\n");
-                    auxSet=product.getComments();
-                    for(Comments comment : auxSet){
-                        this.bw.write("   ~Comment: <" + comment.toString() + ">\n");
-                    }
+                    this.bw.write("  -Product: <"+ product.toString()+">\n");        
                 }
                 client.makeOrder(aux);
-                this.bw.write("The order is done and these products need to be replenished\n");
+                this.bw.write("\nThe order is done and these products need to be replenished\n");
 
                 for(Product product : this.replenished){
                     this.bw.write("  -Product: <"+ product.toString()+">\n");
@@ -490,26 +485,23 @@ public class StockManager
             this.bw.write("\n At the end of simulation\n");
             for(Map.Entry<Product, Integer> entry : order.entrySet()){
                 this.bw.write("\nSoldProduct: " + entry.getKey().toString() + "\n");
-                auxSet=entry.getKey().getComments();
                 if(entry.getValue() > soldCount){
                     soldCount = entry.getValue(); 
                 }
-                for(Comments comment : auxSet){
-                    this.bw.write("  ~Comment: <" + comment.toString() + ">\n");
-                }
 
             }
+            
             Product p = getMostSold();
-            this.bw.write("\nMostSoldProduct: " + p.toString() + " salesNumber: "+ soldCount + "\n");
+            this.bw.write("\n ~MostSoldProduct: \n" + p.toString() + "\n salesNumber: "+ soldCount + "\n");
 
             p=getMostCommented();
-            this.bw.write("MostCommentedProduct: " + p.toString() + " commentsNumber: "+ p.getComments().size()+"\n");
+            this.bw.write("\n ~MostCommentedProduct: \n" + p.toString() + "\n commentsNumber: "+ p.getComments().size()+"\n");
 
             Client c = getOrderNumber();
-            this.bw.write("\nClientWithMoreOrders: " + c.toString() + " OrderNumber: " + c.getOrderNumber() + "\n");
+            this.bw.write("\n ~ClientWithMoreOrders: \n" + c.toString() + "\n OrderNumber: " + c.getOrderNumber() + "\n");
 
             c=getBestClient();
-            this.bw.write("ClientWhoSpentMoreMoney: " + c.toString() + " totalQuantityofMoneySpent: " + c.getMoneySpent());
+            this.bw.write("\n ~ClientWhoSpentMoreMoney: \n" + c.toString() + "\n totalQuantityofMoneySpent: " + c.getMoneySpent());
             this.bw.close();
         }catch(IOException e){
             System.out.println("ERROR: IOException has ocurred");

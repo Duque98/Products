@@ -1,5 +1,4 @@
-import java.util.Set; 
-import java.util.HashSet; 
+import java.util.*; 
 import java.util.Objects; 
 import java.util.Iterator; 
 /**
@@ -35,7 +34,7 @@ public class Product
         this.id = 0;
         this.name = "";
         this.quantity = 0;
-        this.commentsList = new HashSet<Comments>(); 
+        this.commentsList = new TreeSet<Comments>(new PointsComparator()); 
         this.stockMin=0;        
         this.price=0.0f;
         this.discount=0.0f;
@@ -65,7 +64,7 @@ public class Product
         this.id = id;
         this.name = name;
         this.quantity = quantity;
-        this.commentsList = new HashSet<Comments>(); 
+        this.commentsList = new TreeSet<Comments>(new PointsComparator()); 
         this.stockMin=stockMin;
         this.price=price;
 
@@ -124,7 +123,6 @@ public class Product
         return this.discount;
     }
 
-
     /**Return the set of comments
      * return commentsList  Set of comments
      */
@@ -137,10 +135,16 @@ public class Product
      */
     public String toString()
     {
-
+        StringBuilder commentsString = new StringBuilder();
+        if(!commentsList.isEmpty()){
+            commentsString.append("\n   Comments: " ); 
+            for(Comments comment : this.commentsList){
+                commentsString.append(" \n          ~Comment: <" + comment.toString());
+            }}
         return "Id: "+ this.id + " Name: " +
         this.name +
-        " Stock level: " + this.quantity + " Min Quantity: " + this.stockMin +" Price: " + this.price;
+        " Stock level: " + this.quantity + " Min Quantity: " + this.stockMin +" Price: " + this.price
+        + commentsString;
 
     }
 
@@ -188,8 +192,9 @@ public class Product
 
         if(!hasCommented(nameClient)){
 
-            Comments newComment = new Comments(comment, nameClient, points);
-            commentsList.add(newComment);
+            Comments commentToAdd = new Comments(comment, nameClient, points);
+            
+            commentsList.add(commentToAdd);
 
         }
     }
