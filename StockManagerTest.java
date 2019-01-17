@@ -53,7 +53,8 @@ public class StockManagerTest
 
     @Test
     public void testDeleteClient(){
-        client1 = stockMan1.getClient(0);
+        client1 = new Client(); 
+        stockMan1.getClientList().add(client1);
         assertEquals(1, stockMan1.getClientList().size()); 
         stockMan1.deleteClient(client1);
         assertEquals(0, stockMan1.getClientList().size()); 
@@ -98,10 +99,11 @@ public class StockManagerTest
     
     @Test
     public void testDeleteProduct(){
-        Product p1 = (Product)stockMan1.getStockList().get(1);
-        assertEquals(2, stockMan1.getStockList().size()); 
-        stockMan1.deleteProduct(p1);
+        Product p1 = new Product(); 
+        stockMan1.getStockList().add(p1);
         assertEquals(1, stockMan1.getStockList().size()); 
+        stockMan1.deleteProduct(p1);
+        assertEquals(0, stockMan1.getStockList().size()); 
     }
     /**
      * Tears down the test fixture.
@@ -111,5 +113,8 @@ public class StockManagerTest
     @After
     public void tearDown()
     {
+        stockMan1.getClientList().clear(); 
+        stockMan1.getOrderList().clear(); 
+        stockMan1.getStockList().clear(); 
     }
 }
