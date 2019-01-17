@@ -25,7 +25,7 @@ public class StockManager
     private ArrayList<Client> clientsList; 
     //Singleton
     private static StockManager SM; 
-    
+
     private ArrayList<String> defaultComments; 
 
     private BufferedWriter bw;
@@ -42,7 +42,7 @@ public class StockManager
         this.order = new HashMap<Product, Integer>();
         this.clientsList = new ArrayList<Client>();
         this.defaultComments = new ArrayList<String>();  
-        InitializeDefaultComments();
+        initializeDefaultComments();
         try{
             this.bw =new BufferedWriter(new FileWriter(".\registro.log"));
         }catch(IOException e){
@@ -50,6 +50,7 @@ public class StockManager
         }
         this.replenished = new ArrayList<Product>();
     }
+
     /**
      * Constructor Parametrized for object for the class StockManager
      * @param name  String of the name of StockManager
@@ -61,7 +62,7 @@ public class StockManager
         this.order = new HashMap<Product, Integer>();
         this.clientsList = new ArrayList<Client>(); 
         this.defaultComments = new ArrayList<String>();
-        InitializeDefaultComments(); 
+        initializeDefaultComments(); 
         try{
             this.bw =new BufferedWriter(new FileWriter("registro.log"));
         }catch(IOException e){
@@ -69,6 +70,7 @@ public class StockManager
         }
         this.replenished = new ArrayList<Product>();
     }
+
     /**
      * Return the unique instance of the StockManager, if it doesn't exist, create it and return it.
      * @param name  String of the name of stockManager
@@ -80,6 +82,7 @@ public class StockManager
         }
         return SM ;
     }
+
     /**
      * Return the unique instance of the StockManager, if it doesn't exist, create it and return it.
      */
@@ -91,6 +94,7 @@ public class StockManager
 
         return SM;    
     }
+
     /**
      * Add a client to the ArrayList of clients
      * @param client    Client to be added
@@ -102,6 +106,7 @@ public class StockManager
             System.out.println("The Client has alredy exists");
         }
     }
+
     /**
      * Delete a client to the ArrayList of clients
      * @param client    Client to be added
@@ -113,6 +118,7 @@ public class StockManager
             System.out.println("The Client is not in the Client list");
         }
     }
+
     /**
      * Add a product to the list.
      * @param item The item to be added.
@@ -127,17 +133,32 @@ public class StockManager
     }
 
     /**
+     * Delete a product to the list.
+     * @param item The item to be deleted.
+     */
+    public void deleteProduct(Product item){
+        if(findProductBool(item)){
+            stock.remove(item);
+        }else{
+            System.out.println("The product is not in stock");
+        }
+    }
+
+    /**
      * Find a product. If it has found return true. 
      * @param item  Product to be found
      * @return aux  boolean 
      */
     public boolean findProductBool(Product item){
         boolean aux = false; 
-        Iterator<Product> it = stock.iterator(); 
-        while(it.hasNext() && !aux){
-            Product product = it.next(); 
-            if(item.equals(product)){
-                aux=true;       
+
+        if(!stock.isEmpty()){
+            Iterator<Product> it = stock.iterator(); 
+            while(it.hasNext() && !aux){
+                Product product = it.next(); 
+                if(product.equals(item)){
+                    aux=true;       
+                }
             }
         }
         return aux;
@@ -157,12 +178,10 @@ public class StockManager
                 Integer aux1 =0;
                 aux1=entry.getValue() + OrderQuantity;
                 entry.setValue(aux1);                 
-                item.AddSold(OrderQuantity); 
             }
         }
         if(!aux){
             order.put(item, OrderQuantity);
-            item.AddSold(OrderQuantity);
         }
     }
 
@@ -260,7 +279,7 @@ public class StockManager
      * @param Integer OrderQuantity The quantity of the product in a order  
      * @param Product product
      */
-    public void AddToOrder(Integer OrderQuantity, Product product){
+    public void addToOrder(Integer OrderQuantity, Product product){
 
         if(OrderQuantity < product.getQuantity()){
             addProductOrder(OrderQuantity, product);
@@ -276,6 +295,7 @@ public class StockManager
             setReplenished(this.replenished,product);
         }
     }   
+
     /**Each turn fill the arrayList with products to be replenished
      * @param replenished   ArrayList of products out of stock and replenished
      * @param product   Product 
@@ -291,29 +311,32 @@ public class StockManager
      * 
      * @param HashMap map The map with the favourite products
      */
-    public void FavouriteOrder(HashMap<Product, Integer> map){
+    public void favouriteOrder(HashMap<Product, Integer> map){
 
         for(Map.Entry<Product, Integer> entry : map.entrySet()){
             if(stock.contains(entry.getKey())){
-               
-                AddToOrder(entry.getValue(),entry.getKey());  
+
+                addToOrder(entry.getValue(),entry.getKey());  
             }
         }
     }
+
     /**Make a order of one of each favourite products in the favourite list of a client
      * @param favouriteOrder    ArrayList of products to be ordered
      */
-    public void MakeVipOrder(ArrayList<Product> favouriteOrder){
+    public void makeVipOrder(ArrayList<Product> favouriteOrder){
         for(Product product : favouriteOrder){
-            AddToOrder(1, product);
+            addToOrder(1, product);
         }
     }
+
     /**Make a order of 50 of this product
      * @param product   Product to be ordered
      */
-    public void MakeStandardOrder(Product product){
-        AddToOrder(50, product);     
+    public void makeStandardOrder(Product product){
+        addToOrder(50, product);     
     }
+
     /**Return a comment based of a given point
      * @param points    Integer of points
      * @return the choosen comment of the default comments list 
@@ -326,7 +349,7 @@ public class StockManager
      * 
      * @return The product with the most comments
      */
-    
+
     public Product getMostCommented(){
         Integer aux = 0; 
         Product p = new Product(); 
@@ -363,11 +386,12 @@ public class StockManager
      */
     public Product getMostSold(){
         Product mostSold = new Product(); 
+        Integer aux=0;
         for (Map.Entry<Product, Integer> entry : order.entrySet()){
-            if(entry.getValue() > mostSold.getSoldCount()){
+            if(entry.getValue() > aux){
                 mostSold = entry.getKey(); 
+                aux+=entry.getValue();
             }
-
         }
         return mostSold; 
     }
@@ -417,7 +441,7 @@ public class StockManager
 
     /**Initialize an ArrayList of predetermined comments 
      */
-    public void InitializeDefaultComments(){
+    public void initializeDefaultComments(){
         this.defaultComments.add("Bad product");
         this.defaultComments.add("Not very good product");
         this.defaultComments.add("Good product");
@@ -428,15 +452,20 @@ public class StockManager
     /**Write the file "registro.log" to save the simulation
      * 
      */
-    public void WriteFile(){
+    public void writeFile(){
         try{
-            Integer i=1; 
+            Integer soldCount=0;
+            Integer turn=1; 
             ArrayList<Product> aux=new ArrayList();
             Set<Comments> auxSet= new HashSet();
-            for(Client client : clientsList){
-                aux=client.PrepareOrder();
+            Client client = new Client();
+
+            for(int i=0;turn<=10;i++){
+                client=clientsList.get(i%clientsList.size());
+                aux=client.prepareOrder();
                 this.replenished.clear();
-                this.bw.write("(turn: " + i+")");
+
+                this.bw.write("(turn: " + turn +")");
                 this.bw.newLine();
                 this.bw.write("Client: <"+ client.toString()+">");
                 this.bw.newLine();
@@ -448,44 +477,51 @@ public class StockManager
                         this.bw.write("   ~Comment: <" + comment.toString() + ">\n");
                     }
                 }
-                client.MakeOrder(aux);
+                client.makeOrder(aux);
                 this.bw.write("The order is done and these products need to be replenished\n");
 
                 for(Product product : this.replenished){
                     this.bw.write("  -Product: <"+ product.toString()+">\n");
                 }
-                i++;
+
+                turn++;
             }
             this.bw.write("\n At the end of simulation\n");
             for(Map.Entry<Product, Integer> entry : order.entrySet()){
                 this.bw.write("\nSoldProduct: " + entry.getKey().toString() + "\n");
                 auxSet=entry.getKey().getComments();
+                if(entry.getValue() > soldCount){
+                    soldCount = entry.getValue(); 
+                }
                 for(Comments comment : auxSet){
                     this.bw.write("  ~Comment: <" + comment.toString() + ">\n");
                 }
 
             }
             Product p = getMostSold();
-            this.bw.write("\nMostSoldProduct: " + p.toString() + " salesNumber: "+ p.getSoldCount() + "\n");
-            
+            this.bw.write("\nMostSoldProduct: " + p.toString() + " salesNumber: "+ soldCount + "\n");
+
             p=getMostCommented();
             this.bw.write("MostCommentedProduct: " + p.toString() + " commentsNumber: "+ p.getComments().size()+"\n");
-            
+
             Client c = getOrderNumber();
             this.bw.write("\nClientWithMoreOrders: " + c.toString() + " OrderNumber: " + c.getOrderNumber() + "\n");
-            
+
             c=getBestClient();
             this.bw.write("ClientWhoSpentMoreMoney: " + c.toString() + " totalQuantityofMoneySpent: " + c.getMoneySpent());
             this.bw.close();
         }catch(IOException e){
             System.out.println("ERROR: IOException has ocurred");
         }
-        
+
     }
-    
-    
-        public ArrayList getStockList(){
-            return this.stock;
-        }
+
+    public ArrayList getStockList(){
+        return this.stock;
     }
+
+    public Map getOrderList(){
+        return this.order;
+    }
+}
 

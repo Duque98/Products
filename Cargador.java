@@ -237,7 +237,7 @@ public class Cargador {
         
         Product p = stockmanager.getProduct(Integer.parseInt(vCampos.get(2)));
         Client c = stockmanager.getClient(Integer.parseInt(vCampos.get(1)));
-        c.AddProductFavourite(p,vCampos.get(3));
+        c.addProductFavourite(p,vCampos.get(3));
         //asociar el producto p al cliente con id = Integer.parseInt(vCampos.get(1))
     }
 

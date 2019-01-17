@@ -45,7 +45,7 @@ public class ClasePrincipal {
             }
          
           */
-         sm.WriteFile();
+         sm.writeFile();
          
     }
 

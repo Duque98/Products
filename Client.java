@@ -62,7 +62,7 @@ public class Client
      * @param  product The product who will be added
      * @param namebyClient The name that the client put to the product
      */
-    public void AddProductFavourite(Product product, String namebyClient)
+    public void addProductFavourite(Product product, String namebyClient)
     {
 
         if(!favouriteProducts.containsKey(namebyClient)){
@@ -76,7 +76,7 @@ public class Client
      *
      * @param  namebyClient The name of the product that you will remove
      */
-    public void DeleteProductFavourite(String namebyClient)
+    public void deleteProductFavourite(String namebyClient)
     {
         if(favouriteProducts.containsKey(namebyClient)){
             favouriteProducts.remove(namebyClient);   
@@ -208,7 +208,7 @@ public class Client
      * Show every product in the favourite list of the client
      * 
      */
-    public void ShowProducts(){
+    public void showProducts(){
         System.out.println("The list of favourite products: ");
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
 
@@ -226,13 +226,13 @@ public class Client
      * @param   points Integer to give [Range 1-5]
      *       
      */
-    public void PostComment(String namebyClient, String comment, Integer points){
+    public void postComment(String namebyClient, String comment, Integer points){
         
         if(favouriteProducts.containsKey(namebyClient)){
             Product product = new Product(); 
-            product = FindProductbyName(namebyClient);
+            product = findProductbyName(namebyClient);
             
-            product.PostComment(comment, this.name, points);
+            product.postComment(comment, this.name, points);
             
         }
     }
@@ -242,7 +242,7 @@ public class Client
      * @param namebyClient A name given by the client to the product
      * @return product  Product that has founded
      */
-    public Product FindProductbyName(String namebyClient){
+    public Product findProductbyName(String namebyClient){
         Product product = new Product(); 
         for (Map.Entry<String, Product> entry : favouriteProducts.entrySet()){
             if(entry.getKey()==namebyClient){
@@ -256,7 +256,7 @@ public class Client
      *
      * @param   favouriteOrder  ArrayList of favouriteProducts    
      */
-    public void MakeOrder(ArrayList<Product> favouriteOrder){
+    public void makeOrder(ArrayList<Product> favouriteOrder){
 
     }
 /**
@@ -265,14 +265,14 @@ public class Client
      *
      * @param   SM The Stock Manager who sells products  
      */
-    public void MakeOrderFavourites(StockManager SM){
+    public void makeOrderFavourites(StockManager SM){
         
         SM.getInstance(); 
         HashMap favouriteOrder = new HashMap<Product, Integer>(); 
         for(Map.Entry<String, Product> entry : favouriteProducts.entrySet()){            
             favouriteOrder.put(entry.getValue(), 1);             
         }
-        SM.FavouriteOrder(favouriteOrder);
+        SM.favouriteOrder(favouriteOrder);
 
     }
     
@@ -298,14 +298,14 @@ public class Client
     /**
      * @return null
      */
-    public ArrayList PrepareOrder(){
+    public ArrayList prepareOrder(){
         return null; 
     }
     
     /**
      * Increase the orderNumber
      */
-    protected void IncreaseOrderNumber(){
+    protected void increaseOrderNumber(){
         this.orderNumber++; 
     }
     

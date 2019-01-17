@@ -33,7 +33,7 @@ public class Comments
     {
         this.text = text; 
         this.nameClient = nameClient; 
-        CheckCommentsPoints(points);
+        checkCommentsPoints(points);
 
     }
     /**
@@ -41,7 +41,7 @@ public class Comments
      * give to the Product. 
      *  
      */
-    public void ShowComment(){
+    public void showComment(){
      
         System.out.println("Client: " + this.nameClient); 
         System.out.println("Comment: " + this.text); 
@@ -94,7 +94,7 @@ public class Comments
      * Check the value of a Integer and fix when the number is out of bounds
      * @param points    Integer to be checked to make a valid value point
      */
-    public void CheckCommentsPoints(Integer points){
+    public void checkCommentsPoints(Integer points){
         if(points<=0){
             points=1;
             this.points = points; 

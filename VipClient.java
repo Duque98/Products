@@ -33,13 +33,13 @@ public class VipClient extends Client
      * Go through favourite product map and try to find a given product.If it finds the correct product, post a comment in it and like it.
      * @param product The product to be commented
      */
-    public void PostComment(Product product){
+    public void postComment(Product product){
 
         if(favouriteProducts.containsValue(product)){
             if(product instanceof FoodProduct){
                 
             }else{
-                product.PostComment("I really like this product", this.name, 4);
+                product.postComment("I really like this product", this.name, 4);
                 if(product instanceof HomeProduct){
                     HomeProduct hp = (HomeProduct)product;
                     hp.Like();
@@ -54,7 +54,7 @@ public class VipClient extends Client
      * @return favouriteOrder   ArrayList of a order
      */
     @Override
-    public ArrayList PrepareOrder(){
+    public ArrayList prepareOrder(){
 
         ArrayList favouriteOrder = new ArrayList<Product>(); 
         for(Product product : favouriteProducts.values()){
@@ -69,7 +69,7 @@ public class VipClient extends Client
      * Calculate the total price of a order
      * @return totalPrice   The total price of the order
      */
-    public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
+    public Float getPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f; 
         for(Product product : favouriteOrder){
             totalPrice += product.getPrice() + (product.getPrice()*product.getDiscount());            
@@ -82,14 +82,15 @@ public class VipClient extends Client
      * @param   favouriteOrder  ArrayList of the order
      */
     @Override
-    public void MakeOrder(ArrayList<Product> favouriteOrder){
+    public void makeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM = StockManager.getInstance();
-        this.moneySpent += this.GetPriceOrder(favouriteOrder); 
-        SM.MakeVipOrder(favouriteOrder);
+        this.moneySpent += this.getPriceOrder(favouriteOrder); 
+        SM.makeVipOrder(favouriteOrder);
+        
         for(Product product : favouriteOrder){
-            PostComment(product);
+            postComment(product);
         }
-        IncreaseOrderNumber(); 
+        increaseOrderNumber(); 
     }
 
     

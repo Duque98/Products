@@ -24,8 +24,6 @@ public class Product
     protected Float price;
     //Discount of product
     protected Float discount;
-    //Times sold 
-    protected Integer soldCount; 
     /**
      * Constructor for objects of class Product.
      * The initial stock quantity is zero.
@@ -41,7 +39,6 @@ public class Product
         this.stockMin=0;        
         this.price=0.0f;
         this.discount=0.0f;
-        this.soldCount=0; 
     }
 
     /**
@@ -62,7 +59,7 @@ public class Product
             quantity=quantity*(-1);
         }
 
-         if(stockMin<0){
+        if(stockMin<0){
             stockMin=stockMin*(-1);
         }
         this.id = id;
@@ -71,17 +68,9 @@ public class Product
         this.commentsList = new HashSet<Comments>(); 
         this.stockMin=stockMin;
         this.price=price;
-        /*
-        try{
-            this.price=price;
-        }
-        catch(NumberFormatException e){
-            this.price=Math.round(price);
-            System.out.println(e.getMessage()); 
-        }*/
-        
-       this.discount=0.0f;
-       this.soldCount=0; 
+
+        this.discount=0.0f;
+
     }
 
     /**
@@ -118,6 +107,7 @@ public class Product
     public Integer getStock(){
         return this.stockMin;
     }
+
     /**
      * Get the price
      * @return The price of the product.
@@ -125,6 +115,7 @@ public class Product
     public Float getPrice(){
         return this.price;
     }
+
     /**
      * Get the discount
      * @return The discount of the product.
@@ -132,44 +123,25 @@ public class Product
     public Float getDiscount(){
         return this.discount;
     }
-    /**
-     * Get soldCount
-     * @return The times a product was sold.
-     */
-    public Integer getSoldCount()
-    {
-        return this.soldCount;
-    }
-    /**
-     * Set soldCount
-     * @param Integer _soldCount
-     */
-    public void setSoldCount(Integer _soldCount)
-    {
-        this.soldCount = _soldCount;
-    }
+
+
     /**Return the set of comments
      * return commentsList  Set of comments
      */
     public Set getComments(){
-     return this.commentsList;   
+        return this.commentsList;   
     }
-    /**Add a integer to soldCount
-     * @param quantity  Integer to be added
-     */
-    public void AddSold(Integer quantity){
-        this.soldCount += quantity;         
-    }
+
     /**
      * @return String that "textually represents" this object.
      */
     public String toString()
     {
-        
+
         return "Id: "+ this.id + " Name: " +
         this.name +
         " Stock level: " + this.quantity + " Min Quantity: " + this.stockMin +" Price: " + this.price;
-        
+
     }
 
     /**
@@ -212,22 +184,23 @@ public class Product
      * @param Integer OrderQuantity The quantity of a product the client want to order.
      * @param String nameClient The name of the client who want to comment.
      */
-    public void PostComment(String comment, String nameClient, Integer points){
+    public void postComment(String comment, String nameClient, Integer points){
 
-        if(!HasCommented(nameClient)){
+        if(!hasCommented(nameClient)){
 
             Comments newComment = new Comments(comment, nameClient, points);
             commentsList.add(newComment);
 
         }
     }
+
     /**
      * 
      * @param String nameClient The name of the client who want to coment
      * @return True if the client has commented
      * 
      */
-    public boolean HasCommented(String nameClient){
+    public boolean hasCommented(String nameClient){
         boolean aux = false; 
         Iterator<Comments> it = commentsList.iterator(); 
         while(it.hasNext() && !aux){
@@ -236,7 +209,7 @@ public class Product
                 aux=true;       
             }            
         }
-        
+
         return aux; 
     }
 
@@ -244,37 +217,44 @@ public class Product
      * Show all the comments that a product have.
      *  
      */
-    public void ShowComments(){
+    public void showComments(){
 
         for (Comments comments : commentsList){
-            comments.ShowComment();             
+            comments.showComment();             
         }
 
     }
+
     /**
      * @return The size of the set of comments
      */
     public Integer getNumberOfComments(){
         return commentsList.size(); 
     }
-    
+
     /**
      * @return Hashcode value for the object
      */
     @Override
     public int hashCode(){
-      return Objects.hash(this.id, this.name); 
+        return Objects.hash(this.id, this.name); 
     }
+
     /**
-     * Compares this string to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
-     * @return true if the given object represents a String equivalent to this string, false otherwise 
+     * Compares this product to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
+     * @return true if the given object represents a product equivalent to this product, false otherwise 
      */
     @Override
     public boolean equals(Object obj) {
         Product product = (Product) obj; 
-     return ((product.getName().equals(this.getName())) && (product.getID() == this.getID()) && (product.discount == this.discount));
-        
+        if(this == obj)
+            return true;
+        if(!(obj instanceof Product))
+            return false;
+        return ((this.getName().equals(product.getName())) && (this.getID().equals(product.getID())));
+
     }
+
     /**
      * @return the set of comments
      */

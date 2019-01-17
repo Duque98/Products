@@ -34,30 +34,24 @@ public class StandardClient extends Client
 
     }
 
-
     /**Go through the map of favouriteProduct of this client and add to order the two more expensive products.
      * @return favouriteOrder   ArrayList of a order
      */
     @Override
-    public ArrayList PrepareOrder(){
+    public ArrayList prepareOrder(){
         ArrayList aux = new ArrayList<Product>(); 
         ArrayList favouriteOrder = new ArrayList<Product>(); 
         for(Product product : favouriteProducts.values()){
             aux.add(product); 
-            
+
         }
 
         Collections.sort(aux, Collections.reverseOrder(new PriceComparator())); 
         favouriteOrder.add(aux.get(0)); 
         try{
-            
-        
-        favouriteOrder.add(aux.get(1)); 
-        
+            favouriteOrder.add(aux.get(1)); 
         }catch (IndexOutOfBoundsException e){
-            
-        //favouriteOrder.add(aux.get(0)); 
-            
+      
         }
         return favouriteOrder; 
     }
@@ -66,27 +60,28 @@ public class StandardClient extends Client
      * Calculate the total price of a order
      * @return totalPrice   The total price of the order
      */
-    public Float GetPriceOrder(ArrayList<Product> favouriteOrder){
+    public Float getPriceOrder(ArrayList<Product> favouriteOrder){
         Float totalPrice = 0.0f;
         for(Product product : favouriteOrder){
             totalPrice += 50.0f*( product.getPrice() + (product.getPrice()*(product.getDiscount())));
         }
         return totalPrice;
     }
+
     /**
      * Make a order to the stockManager
      * @param   favouriteOrder  ArrayList of the order
      */
     @Override
-    public void MakeOrder(ArrayList<Product> favouriteOrder){
+    public void makeOrder(ArrayList<Product> favouriteOrder){
         StockManager SM=StockManager.getInstance();
         for(Product product : favouriteOrder){
-                SM.MakeStandardOrder(product);
-                IncreaseOrderNumber(); 
-                PostComment(product);
-            }   
-        
-        this.moneySpent += GetPriceOrder(favouriteOrder); 
+            SM.makeStandardOrder(product);
+            increaseOrderNumber(); 
+            postComment(product);
+        }   
+
+        this.moneySpent += getPriceOrder(favouriteOrder); 
     }
 
     /**
@@ -97,18 +92,17 @@ public class StandardClient extends Client
      * @param   points Points to rive [Range 1-5]
      *       
      */
-    public void PostComment(Product product){
+    public void postComment(Product product){
 
         if(favouriteProducts.containsValue(product)){
             if(product instanceof FoodProduct){
-         
             }else{                               
-                CheckPoint(product); 
+                checkPoint(product); 
             }
         }
     }
 
-    private void CheckPoint(Product product){
+    private void checkPoint(Product product){
 
         Integer point = (product.name.length()%5)+1;
         String comment = StockManager.getInstance().getDefaultComments(point-1);
@@ -121,7 +115,7 @@ public class StandardClient extends Client
                 hp.Unlike(); 
             }
         }
-        product.PostComment(comment, this.name, point);
+        product.postComment(comment, this.name, point);
 
     }
 
