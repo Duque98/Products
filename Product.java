@@ -136,14 +136,15 @@ public class Product
         StringBuilder commentsString = new StringBuilder();
         if(!commentsList.isEmpty()){
             commentsString.append("\n   Comments: " ); 
-            for(Comments comment : this.commentsList){
-                for(int i=1; i<=5; i++){
+            for(int i=5; i>=1; i--){
+            for(Comments comment : this.commentsList){                
                     if(comment.getPoints() == i){
                         commentsString.append(" \n          ~Comment: <" + comment.toString());
                     }
                 }
                 
-            }}
+            }
+        }
         return "Id: "+ this.id + " Name: " +
         this.name +
         " Stock level: " + this.quantity + " Min Quantity: " + this.stockMin +" Price: " + this.price

@@ -262,11 +262,12 @@ public class StockManager
             addProductOrder(OrderQuantity, product);
             product.sellOrder(OrderQuantity);      
         }else{
-            delivery(product, (OrderQuantity-product.getQuantity())+1);
+            delivery(product, (OrderQuantity-product.getQuantity()));
             addProductOrder(OrderQuantity, product);
             product.sellOrder(OrderQuantity);  
             setReplenished(this.replenished,product);   
         }
+        
         if(product.getQuantity() < product.getStock()){
             delivery(product,(product.getStock()-product.getQuantity())+1);   
             setReplenished(this.replenished,product);
@@ -432,6 +433,8 @@ public class StockManager
                     for(Product product : this.replenished){
                         this.bw.write("  -Product: <"+ product.toString()+">\n");
                     }
+                }else{
+                    this.bw.write("\nThe order is done\n");
                 }
                 turn++;
             }
