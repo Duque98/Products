@@ -143,27 +143,6 @@ public class StockManager
             System.out.println("The product is not in stock");
         }
     }
-
-    /*
-     * Find a product. If it has found return true. 
-     * @param item  Product to be found
-     * @return aux  boolean 
-    
-    public boolean findProductBool(Product item){
-        boolean aux = false; 
-
-        if(!stock.isEmpty()){
-            Iterator<Product> it = stock.iterator(); 
-            while(it.hasNext() && !aux){
-                Product product = it.next(); 
-                if(product.equals(item)){
-                    aux=true;       
-                }
-            }
-        }
-        return aux;
-    }
-    */
  
     /**
      * Go through the map. If it finds the given product, add a given quantity to a order.If it doesn't find the product, add it to the map
@@ -286,13 +265,13 @@ public class StockManager
             addProductOrder(OrderQuantity, product);
             product.sellOrder(OrderQuantity);      
         }else{
-            delivery(product, OrderQuantity-product.getQuantity());
+            delivery(product, (OrderQuantity-product.getQuantity())+1);
             addProductOrder(OrderQuantity, product);
             product.sellOrder(OrderQuantity);  
             setReplenished(this.replenished,product);   
         }
         if(product.getQuantity() < product.getStock()){
-            delivery(product, product.getStock()-product.getQuantity());   
+            delivery(product,(product.getStock()-product.getQuantity())+1);   
             setReplenished(this.replenished,product);
         }
     }   
@@ -474,12 +453,12 @@ public class StockManager
                     this.bw.write("  -Product: <"+ product.toString()+">\n");        
                 }
                 client.makeOrder(aux);
+                if(!this.replenished.isEmpty()){
                 this.bw.write("\nThe order is done and these products need to be replenished\n");
-
                 for(Product product : this.replenished){
                     this.bw.write("  -Product: <"+ product.toString()+">\n");
                 }
-
+            }
                 turn++;
             }
             this.bw.write("\n At the end of simulation\n");
