@@ -106,4 +106,19 @@ public class Comments
         }
         
     }
+    
+        /**
+     * Compares this Comments to the specified object. The result is true if and only if the argument is not null and is a String object that represents the same sequence of characters as this object.
+     * @return true if the given object represents a Comments equivalent to this Comments, false otherwise 
+     */
+    @Override
+    public boolean equals(Object obj) {
+        Comments comments = (Comments) obj; 
+        if(this == obj)
+            return true;
+        if(!(obj instanceof Comments))
+            return false;
+        return ((this.getNameClient().equals(comments.getNameClient())));
+    }
+    
 }

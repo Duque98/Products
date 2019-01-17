@@ -34,7 +34,7 @@ public class Product
         this.id = 0;
         this.name = "";
         this.quantity = 0;
-        this.commentsList = new TreeSet<Comments>(new PointsComparator()); 
+        this.commentsList = new HashSet<Comments>(); 
         this.stockMin=0;        
         this.price=0.0f;
         this.discount=0.0f;
@@ -64,7 +64,7 @@ public class Product
         this.id = id;
         this.name = name;
         this.quantity = quantity;
-        this.commentsList = new TreeSet<Comments>(new PointsComparator()); 
+        this.commentsList = new HashSet<Comments>(); 
         this.stockMin=stockMin;
         this.price=price;
         this.discount=0.0f;
@@ -137,7 +137,12 @@ public class Product
         if(!commentsList.isEmpty()){
             commentsString.append("\n   Comments: " ); 
             for(Comments comment : this.commentsList){
-                commentsString.append(" \n          ~Comment: <" + comment.toString());
+                for(int i=1; i<=5; i++){
+                    if(comment.getPoints() == i){
+                        commentsString.append(" \n          ~Comment: <" + comment.toString());
+                    }
+                }
+                
             }}
         return "Id: "+ this.id + " Name: " +
         this.name +
@@ -186,6 +191,7 @@ public class Product
      * @param String nameClient The name of the client who want to comment.
      */
     public void postComment(String comment, String nameClient, Integer points){
+     
         if(!hasCommented(nameClient)){
             Comments commentToAdd = new Comments(comment, nameClient, points);    
             commentsList.add(commentToAdd);
@@ -202,11 +208,9 @@ public class Product
         boolean aux = false; 
         Iterator<Comments> it = commentsList.iterator(); 
         while(it.hasNext() && !aux){
-            Comments c = it.next();
-            System.out.println(c.getNameClient()); 
+            Comments c = it.next();   
             if(c.getNameClient().equals(nameClient)){
                 aux=true;  
-                System.out.println(c.getNameClient()); 
             }            
         }
         return aux; 
