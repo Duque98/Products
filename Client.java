@@ -303,13 +303,6 @@ public class Client
     }
     
     /**
-     * Increase the orderNumber
-     */
-    protected void increaseOrderNumber(){
-        this.orderNumber++; 
-    }
-    
-    /**
      * @return favouriteProduct Map of the favouriteProduct
      */
     public Map getFavouriteProductList(){

@@ -91,13 +91,6 @@ public class ClientTest
         client1.getFavouriteProductList().containsValue(homeProd1)); 
     }
     
-            @Test
-    public void testIncreaseOrderNumber()
-    { 
-        client1.increaseOrderNumber(); 
-        assertEquals(1,(int)client1.getOrderNumber()); 
-    }
-    
                 @Test
     public void testPostComment()
     { 

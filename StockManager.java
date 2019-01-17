@@ -402,23 +402,6 @@ public class StockManager
         return c; 
     }
 
-    /**Return the client with more number of orders
-     * 
-     * @return best Client with more number of orders  
-     */
-    public Client getOrderNumber(){
-        Integer aux = 0; 
-        Client best = new Client(); 
-        for(Client client: clientsList){
-            if(client.getOrderNumber()  > aux){
-                best = client; 
-                aux = client.getOrderNumber();
-            }            
-        }
-        return best;    
-
-    }
-
     /**Initialize an ArrayList of predetermined comments 
      */
     public void initializeDefaultComments(){
@@ -476,10 +459,8 @@ public class StockManager
             p=getMostCommented();
             this.bw.write("\n ~MostCommentedProduct: \n" + p.toString() + "\n commentsNumber: "+ p.getComments().size()+"\n");
 
-            Client c = getOrderNumber();
-            this.bw.write("\n ~ClientWithMoreOrders: \n" + c.toString() + "\n OrderNumber: " + c.getOrderNumber() + "\n");
-
-            c=getBestClient();
+      
+            Client c=getBestClient();
             this.bw.write("\n ~ClientWhoSpentMoreMoney: \n" + c.toString() + "\n totalQuantityofMoneySpent: " + c.getMoneySpent());
             this.bw.close();
         }catch(IOException e){

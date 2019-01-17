@@ -167,10 +167,6 @@ Id: 1 Name: Nintendo Switch Stock level: 3 Min Quantity: 2 Price: 300.0
           ~Comment: <ClientName: Rafa Nadal Text: Bad product Score: 1
  commentsNumber: 2
 
- ~ClientWithMoreOrders: 
-Id: 1 Name: Rafa Nadal Age: 32 City: Manacor
- OrderNumber: 50
-
  ~ClientWhoSpentMoreMoney: 
 Id: 1 Name: Rafa Nadal Age: 32 City: Manacor
  totalQuantityofMoneySpent: 62400.0
