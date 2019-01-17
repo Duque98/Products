@@ -92,7 +92,7 @@ public class VipClient extends Client
         for(Product product : favouriteOrder){
             postComment(product);
         }
-        increaseOrderNumber(); 
+        //increaseOrderNumber(); 
     }
 
     

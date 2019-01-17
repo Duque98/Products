@@ -79,7 +79,7 @@ public class StandardClient extends Client
         StockManager SM=StockManager.getInstance();
         for(Product product : favouriteOrder){
             SM.makeStandardOrder(product, this.orderNumber);
-            increaseOrderNumber(); 
+           // increaseOrderNumber(); 
             postComment(product);
         }   
 
