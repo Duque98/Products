@@ -149,13 +149,15 @@ public class StockManager
     public void addProductOrder(Integer OrderQuantity, Product item)
     {
         boolean aux = false; 
-        for(Map.Entry<Product, Integer> entry : order.entrySet()){
-            if(item.equals(entry.getKey())){
-                aux=true; 
-                Integer aux1 =0;
-                aux1=entry.getValue() + OrderQuantity;
-                entry.setValue(aux1);                 
-            }
+        Iterator<Map.Entry<Product, Integer>> it  = order.entrySet().iterator(); 
+        while(it.hasNext() && !aux){
+            Map.Entry<Product, Integer> entry = it.next(); 
+            if(entry.getKey().equals(item)){
+                aux=true;                 
+                Integer aux1 = 0;
+                aux1 = entry.getValue() + OrderQuantity; 
+                entry.setValue(aux1);
+            }            
         }
         if(!aux){
             order.put(item, OrderQuantity);
