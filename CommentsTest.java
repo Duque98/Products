@@ -1,5 +1,3 @@
-
-
 import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
@@ -58,6 +56,15 @@ public class CommentsTest
         
        Comments comments2 = new Comments("Good", "Pedro1", -3);
         assertEquals(1, (int)comments2.getPoints());
+    }
+    
+    @Test
+    public void testequals(){
+        Comments comments1 = new Comments("Good", "Pedro", 5);
+        Comments comments2 = new Comments("Good", "Pedro", 5);
+        Comments comments3 = new Comments("Good", "Maria", 5);
+        assertTrue(comments1.equals(comments2));
+        assertFalse(comments1.equals(comments3)); 
     }
 }
 

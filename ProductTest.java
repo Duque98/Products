@@ -96,6 +96,7 @@ public class ProductTest
 
         assertEquals(true,(boolean)product1.hasCommented("Pedro"));
     }
+    
     /**
      * Tears down the test fixture.
      *
